@@ -1,5 +1,6 @@
 package com.example.materialapp.domain
 
+import com.example.materialapp.BuildConfig
 import com.example.materialapp.api.NasaApi
 import com.example.materialapp.api.PictureOfTheDayResponse
 import okhttp3.OkHttpClient
@@ -23,6 +24,6 @@ class NasaRepositoryImpl : NasaRepository {
         .create(NasaApi::class.java)
 
     override suspend fun pictureOfTheDay(): PictureOfTheDayResponse =
-        api.pictureOfTheDay("vYZAv8ifqOXauE8jVVc7yb8gICo27Q3jlPvEMHkq")
+        api.pictureOfTheDay(BuildConfig.NASA_API_KEY)
 
 }
