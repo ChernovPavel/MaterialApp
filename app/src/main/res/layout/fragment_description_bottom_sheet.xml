@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
-        tools:text="Two Clusters and a Comet" />
+        tools:text="Заголовок статьи" />
 
     <TextView
         android:id="@+id/bottom_sheet_description"
@@ -43,5 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header"
-        tools:text="This lovely starfield spans some four full moons." />
+        tools:text="Тут описание картинки......" />
 </androidx.constraintlayout.widget.ConstraintLayout>

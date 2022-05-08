@@ -3,6 +3,7 @@ package com.example.materialapp.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.materialapp.R
 import com.example.materialapp.api.PictureOfTheDayResponse
 import com.example.materialapp.domain.NasaRepository
 import kotlinx.coroutines.flow.Flow
@@ -31,7 +32,7 @@ class MainViewModel(private val repository: NasaRepository) : ViewModel() {
                 _response.emit(response)
 
             } catch (exp: IOException) {
-                _error.emit("Network error")
+                _error.emit(R.string.network_error.toString())
             }
 
             _loading.emit(false)
