@@ -1,8 +1,12 @@
 package com.example.materialapp.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
@@ -10,8 +14,12 @@ import coil.load
 import com.example.materialapp.R
 import com.example.materialapp.databinding.FragmentMainBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(R.layout.fragment_main) {
+
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     private val viewModel: MainViewModel by viewModels() { MainViewModelFactory(NasaRepositoryImpl()) }
 
@@ -27,6 +35,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentMainBinding.bind(view)
+        val bsDescription = view.findViewById<TextView>(R.id.bottom_sheet_description)
+        val bsDescriptionHeader = view.findViewById<TextView>(R.id.bottom_sheet_description_header)
+        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data =
+                    Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
+            })
+        }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.loading.collect() {
@@ -41,11 +59,18 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.image.collect() { url ->
-                url?.let {
-                    binding.img.load(it)
+            viewModel.response.collect() {
+                it?.let { response ->
+                    binding.imageView.load(response.url)
+                    bsDescription?.text = response.explanation
+                    bsDescriptionHeader?.text = response.title
                 }
             }
         }
+    }
+
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 }

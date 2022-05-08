@@ -1,8 +1,12 @@
 package com.example.materialapp.api
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import java.util.*
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 data class PictureOfTheDayResponse(
     @SerializedName("copyright")
     val copyright: String,
@@ -27,4 +31,4 @@ data class PictureOfTheDayResponse(
 
     @SerializedName("url")
     val url: String
-)
+) : Parcelable
