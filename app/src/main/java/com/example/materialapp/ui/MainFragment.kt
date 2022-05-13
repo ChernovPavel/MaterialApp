@@ -15,7 +15,6 @@ import com.example.materialapp.R
 import com.example.materialapp.databinding.FragmentMainBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -42,7 +41,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
+                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
 
