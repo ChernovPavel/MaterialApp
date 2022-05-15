@@ -3,7 +3,9 @@ package com.example.materialapp.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,18 +18,25 @@ import com.example.materialapp.databinding.FragmentMainBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class MainFragment : Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     private val viewModel: MainViewModel by viewModels() { MainViewModelFactory(NasaRepositoryImpl()) }
 
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
-        if (savedInstanceState == null) {
-            viewModel.requestPictureOfTheDay()
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        viewModel.requestPictureOfTheDay()
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
