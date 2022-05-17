@@ -22,14 +22,10 @@ class MainFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-    private val viewModel: MainViewModel by viewModels() { MainViewModelFactory(NasaRepositoryImpl()) }
+    private val viewModel: MainViewModel by viewModels { MainViewModelFactory(NasaRepositoryImpl()) }
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -55,19 +51,19 @@ class MainFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.loading.collect() {
+            viewModel.loading.collect {
                 binding.progress.visibility = if (it) View.VISIBLE else View.GONE
             }
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.error.collect() {
+            viewModel.error.collect {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.response.collect() {
+            viewModel.response.collect {
                 it?.let { response ->
                     binding.imageView.load(response.url)
                     bsDescription?.text = response.explanation

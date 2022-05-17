@@ -3,7 +3,6 @@ package com.example.materialapp.ui
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.example.materialapp.R
 import com.example.materialapp.databinding.ActivityMainBinding
 
@@ -21,30 +20,6 @@ class MainActivity : AppCompatActivity() {
         setTheme(theme)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, SettingsFragment())
-            .commit()
-
-        binding.mainBottomNavigation.setOnItemSelectedListener { id ->
-            when (id.itemId) {
-                R.id.bottom_menu_pic_of_day -> {
-                    loadFragment(MainFragment())
-                    true
-                }
-                R.id.bottom_menu_settings -> {
-                    loadFragment(SettingsFragment())
-                    true
-                }
-                else -> false
-            }
-        }
-        binding.mainBottomNavigation.selectedItemId = R.id.bottom_menu_settings
-    }
-
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commit()
-        supportFragmentManager.popBackStack()
+        binding.viewPager.adapter = ViewPagerAdapter(this)
     }
 }
