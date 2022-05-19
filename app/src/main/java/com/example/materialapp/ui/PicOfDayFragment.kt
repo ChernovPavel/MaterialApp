@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
 import com.example.materialapp.R
-import com.example.materialapp.databinding.FragmentMainBinding
+import com.example.materialapp.databinding.FragmentPicOfDayBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -24,13 +24,13 @@ class PicOfDayFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory(NasaRepositoryImpl()) }
 
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentPicOfDayBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentPicOfDayBinding.inflate(inflater, container, false)
         viewModel.requestPictureOfTheDay()
         return binding.root
     }
@@ -38,7 +38,6 @@ class PicOfDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentMainBinding.bind(view)
         val bsDescription = view.findViewById<TextView>(R.id.bottom_sheet_description)
         val bsDescriptionHeader = view.findViewById<TextView>(R.id.bottom_sheet_description_header)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
