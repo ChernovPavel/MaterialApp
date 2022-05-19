@@ -18,7 +18,7 @@ import com.example.materialapp.databinding.FragmentMainBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class MainFragment : Fragment() {
+class PicOfDayFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 

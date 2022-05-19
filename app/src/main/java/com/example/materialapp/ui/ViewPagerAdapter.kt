@@ -11,7 +11,7 @@ private const val SETTINGS_FRAGMENT = 2
 
 class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
-    private val fragments = arrayOf(MainFragment(), WeatherFragment(), SettingsFragment())
+    private val fragments = arrayOf(PicOfDayFragment(), WeatherFragment(), SettingsFragment())
 
     override fun getItemCount(): Int {
         return fragments.size
