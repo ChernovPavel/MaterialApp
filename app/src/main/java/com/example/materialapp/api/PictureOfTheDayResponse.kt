@@ -2,8 +2,8 @@ package com.example.materialapp.api
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import java.util.*
-import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize

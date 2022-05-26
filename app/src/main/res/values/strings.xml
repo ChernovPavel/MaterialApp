@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">MaterialApp</string>
-    <string name="search_wiki">Поиск по википедии</string>
-    <string name="wiki_helper_text">Введите запрос</string>
-    <string name="photo_of_the_day_stub">Фото дня</string>
-    <string name="network_error">Ошибка сети</string>
+    <string name="search_wiki">Search</string>
+    <string name="wiki_helper_text">Enter a request</string>
+    <string name="photo_of_the_day_stub">Picture of the day</string>
+    <string name="network_error">Network error</string>
+    <string name="bottom_menu_settings">settings</string>
+    <string name="bottom_menu_pic_of_day">picture of day</string>
+    <string name="btn_green_theme">Green Theme</string>
+    <string name="btn_red_theme">Red Theme</string>
 </resources>
