@@ -20,13 +20,13 @@ class PicOfDayFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory(NasaRepositoryImpl()) }
 
-    private var _binding: FragmentPicOfDayBinding? = null
+    private var _binding: FragmentPicOfDayStartBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPicOfDayBinding.inflate(inflater, container, false)
+        _binding = FragmentPicOfDayStartBinding.inflate(inflater, container, false)
         viewModel.requestPictureOfTheDay()
         return binding.root
     }
