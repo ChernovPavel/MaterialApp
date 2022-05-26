@@ -8,19 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
 import com.example.materialapp.R
-import com.example.materialapp.databinding.FragmentPicOfDayBinding
+import com.example.materialapp.databinding.FragmentPicOfDayStartBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class PicOfDayFragment : Fragment() {
-
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory(NasaRepositoryImpl()) }
 
@@ -40,7 +36,6 @@ class PicOfDayFragment : Fragment() {
 
         val bsDescription = view.findViewById<TextView>(R.id.bottom_sheet_description)
         val bsDescriptionHeader = view.findViewById<TextView>(R.id.bottom_sheet_description_header)
-        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
 
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -64,7 +59,7 @@ class PicOfDayFragment : Fragment() {
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.response.collect {
                 it?.let { response ->
-                    binding.imageView.load(response.url)
+                    binding.imageCollapsingToolbar.load(response.url)
                     bsDescription?.text = response.explanation
                     bsDescriptionHeader?.text = response.title
                 }
