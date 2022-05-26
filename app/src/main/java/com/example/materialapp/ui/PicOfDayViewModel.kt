@@ -6,22 +6,23 @@ import androidx.lifecycle.viewModelScope
 import com.example.materialapp.R
 import com.example.materialapp.api.PictureOfTheDayResponse
 import com.example.materialapp.domain.NasaRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class MainViewModel(private val repository: NasaRepository) : ViewModel() {
 
     private val _loading = MutableStateFlow(false)
-    val loading: Flow<Boolean> = _loading
+    val loading = _loading.asStateFlow()
 
     private val _response: MutableStateFlow<PictureOfTheDayResponse?> = MutableStateFlow(null)
-    val response: Flow<PictureOfTheDayResponse?> = _response
+    val response = _response.asStateFlow()
 
     private val _error: MutableSharedFlow<String?> = MutableSharedFlow()
-    val error: Flow<String?> = _error
+    val error = _error.asSharedFlow()
 
 
     fun requestPictureOfTheDay() {

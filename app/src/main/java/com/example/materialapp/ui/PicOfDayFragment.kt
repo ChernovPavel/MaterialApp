@@ -67,8 +67,8 @@ class PicOfDayFragment : Fragment() {
         }
     }
 
-    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }
