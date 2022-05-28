@@ -14,27 +14,23 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
 import com.example.materialapp.R
-import com.example.materialapp.databinding.FragmentMainBinding
+import com.example.materialapp.databinding.FragmentPicOfDayBinding
 import com.example.materialapp.domain.NasaRepositoryImpl
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class MainFragment : Fragment() {
+class PicOfDayFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-    private val viewModel: MainViewModel by viewModels() { MainViewModelFactory(NasaRepositoryImpl()) }
+    private val viewModel: MainViewModel by viewModels { MainViewModelFactory(NasaRepositoryImpl()) }
 
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentPicOfDayBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentPicOfDayBinding.inflate(inflater, container, false)
         viewModel.requestPictureOfTheDay()
         return binding.root
     }
@@ -42,7 +38,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentMainBinding.bind(view)
         val bsDescription = view.findViewById<TextView>(R.id.bottom_sheet_description)
         val bsDescriptionHeader = view.findViewById<TextView>(R.id.bottom_sheet_description_header)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -55,19 +50,19 @@ class MainFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.loading.collect() {
+            viewModel.loading.collect {
                 binding.progress.visibility = if (it) View.VISIBLE else View.GONE
             }
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.error.collect() {
+            viewModel.error.collect {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
         }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
-            viewModel.response.collect() {
+            viewModel.response.collect {
                 it?.let { response ->
                     binding.imageView.load(response.url)
                     bsDescription?.text = response.explanation

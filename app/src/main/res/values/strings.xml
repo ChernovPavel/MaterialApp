@@ -8,4 +8,5 @@
     <string name="bottom_menu_pic_of_day">picture of day</string>
     <string name="btn_green_theme">Green Theme</string>
     <string name="btn_red_theme">Red Theme</string>
+    <string name="bottom_menu_weather">weather</string>
 </resources>

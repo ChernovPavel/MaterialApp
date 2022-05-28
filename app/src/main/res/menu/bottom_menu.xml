@@ -6,6 +6,11 @@
         android:title="@string/bottom_menu_pic_of_day" />
 
     <item
+        android:id="@+id/bottom_menu_weather"
+        android:icon="@drawable/ic_baseline_wb_sunny_24"
+        android:title="@string/bottom_menu_weather" />
+
+    <item
         android:id="@+id/bottom_menu_settings"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/bottom_menu_settings" />

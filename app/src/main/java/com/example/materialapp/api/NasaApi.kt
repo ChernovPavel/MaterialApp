@@ -9,4 +9,10 @@ interface NasaApi {
     suspend fun pictureOfTheDay(
         @Query("api_key") apiKey: String
     ): PictureOfTheDayResponse
+
+    @GET("mars-photos/api/v1/rovers/curiosity/photos?page=1")
+    suspend fun marsPhoto(
+        @Query("api_key") apiKey: String,
+        @Query("earth_date") earthDate: String
+    ): MarsPhotoResponse
 }
