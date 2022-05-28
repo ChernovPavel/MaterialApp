@@ -21,7 +21,7 @@
             app:collapsedTitleTextColor="?attr/colorOnPrimary"
             app:contentScrim="?attr/colorPrimaryTheme"
             app:expandedTitleTextAppearance="@style/expandedBarTextStyle"
-            app:layout_scrollFlags="scroll|snap">
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_collapsing_toolbar"
@@ -30,8 +30,7 @@
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
-                app:shapeAppearanceOverlay="@style/image_bottom_radius"
-                tools:ignore="ImageContrastCheck" />
+                app:shapeAppearanceOverlay="@style/image_bottom_radius" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
