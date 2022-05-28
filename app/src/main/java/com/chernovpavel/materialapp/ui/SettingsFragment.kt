@@ -1,4 +1,4 @@
-package com.example.materialapp.ui
+package com.chernovpavel.materialapp.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
-import com.example.materialapp.R
-import com.example.materialapp.databinding.FragmentSettingsBinding
+import com.chernovpavel.materialapp.R
+import com.chernovpavel.materialapp.databinding.FragmentSettingsBinding
 
 const val THEME = "THEME"
 

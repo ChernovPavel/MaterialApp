@@ -1,11 +1,11 @@
-package com.example.materialapp.ui
+package com.chernovpavel.materialapp.ui
 
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.materialapp.R
-import com.example.materialapp.databinding.ActivityMainBinding
+import com.chernovpavel.materialapp.R
+import com.chernovpavel.materialapp.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {

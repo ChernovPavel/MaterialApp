@@ -6,7 +6,7 @@ import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.materialapp.databinding.ActivityAnimationBinding
+import com.chernovpavel.materialapp.databinding.ActivityAnimationBinding
 
 class AnimationActivity : AppCompatActivity() {
 

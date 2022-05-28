@@ -1,4 +1,4 @@
-package com.example.materialapp.ui
+package com.chernovpavel.materialapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
-import com.example.materialapp.databinding.FragmentMarsPhotoBinding
-import com.example.materialapp.domain.NasaRepositoryImpl
+import com.chernovpavel.materialapp.databinding.FragmentMarsPhotoBinding
+import com.chernovpavel.materialapp.domain.NasaRepositoryImpl
 
 class MarsPhotoFragment : Fragment() {
 

@@ -1,11 +1,11 @@
-package com.example.materialapp.domain
+package com.chernovpavel.materialapp.domain
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.materialapp.BuildConfig
-import com.example.materialapp.api.MarsPhotoResponse
-import com.example.materialapp.api.NasaApi
-import com.example.materialapp.api.PictureOfTheDayResponse
+import com.chernovpavel.materialapp.BuildConfig
+import com.chernovpavel.materialapp.api.MarsPhotoResponse
+import com.chernovpavel.materialapp.api.NasaApi
+import com.chernovpavel.materialapp.api.PictureOfTheDayResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

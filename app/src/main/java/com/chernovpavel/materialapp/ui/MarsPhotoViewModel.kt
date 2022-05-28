@@ -1,11 +1,11 @@
-package com.example.materialapp.ui
+package com.chernovpavel.materialapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.materialapp.R
-import com.example.materialapp.api.MarsPhotoResponse
-import com.example.materialapp.domain.NasaRepository
+import com.chernovpavel.materialapp.R
+import com.chernovpavel.materialapp.api.MarsPhotoResponse
+import com.chernovpavel.materialapp.domain.NasaRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
