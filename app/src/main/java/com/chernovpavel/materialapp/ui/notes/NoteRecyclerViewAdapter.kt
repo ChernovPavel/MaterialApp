@@ -27,9 +27,17 @@ class NoteRecyclerViewAdapter(
         }
     }
 
+    fun appendItem() {
+        data.add(generateItem())
+        notifyItemInserted(itemCount - 1)
+    }
+
+    private fun generateItem() = AdapterItem.NoteItem(Note("новая заметка"))
+
+
     override fun getItemViewType(position: Int): Int = when (data[position]) {
-        is NoteItem -> TYPE_NOTE
-        is HeaderItem -> TYPE_HEADER
+        is AdapterItem.NoteItem -> TYPE_NOTE
+        is AdapterItem.HeaderItem -> TYPE_HEADER
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
@@ -56,12 +64,12 @@ class NoteRecyclerViewAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is NoteViewHolder -> {
-                val item = data[position] as NoteItem
+                val item = data[position] as AdapterItem.NoteItem
                 holder.title.text = item.note.text
             }
 
             is HeaderViewHolder -> {
-                val item = data[position] as HeaderItem
+                val item = data[position] as AdapterItem.HeaderItem
                 holder.headerTxt.text = item.txt
             }
         }
@@ -76,12 +84,22 @@ class NoteRecyclerViewAdapter(
 
         init {
             itemView.setOnClickListener {
-                (data[adapterPosition] as? NoteItem)?.let {
+                (data[adapterPosition] as? AdapterItem.NoteItem)?.let {
                     noteItemClicked?.invoke(it.note)
                 }
             }
+
+            binding.removeItemImageView.setOnClickListener {
+                removeItem()
+            }
+        }
+
+        private fun removeItem() {
+            data.removeAt(layoutPosition)
+            notifyItemRemoved(layoutPosition)
         }
     }
+
 
     inner class HeaderViewHolder(binding: HeaderItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

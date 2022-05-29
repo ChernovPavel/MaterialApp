@@ -23,13 +23,12 @@ class NotesFragment : Fragment() {
     }.apply {
         setData(
             listOf(
-                HeaderItem("Это header"),
-                NoteItem(Note("один")),
-                NoteItem(Note("два")),
-                NoteItem(Note("три"))
+                AdapterItem.HeaderItem("Это header"),
+                AdapterItem.NoteItem(Note("один")),
+                AdapterItem.NoteItem(Note("два")),
+                AdapterItem.NoteItem(Note("три"))
             )
         )
-        notifyDataSetChanged()
     }
 
     override fun onCreateView(
@@ -43,6 +42,8 @@ class NotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.listRv.adapter = adapter
+
+        binding.recyclerActivityFAB.setOnClickListener { adapter.appendItem() }
     }
 
     override fun onDestroyView() {
