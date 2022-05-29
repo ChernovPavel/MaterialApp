@@ -1,4 +1,4 @@
-package com.chernovpavel.materialapp.ui
+package com.chernovpavel.materialapp.ui.picOfDay
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
