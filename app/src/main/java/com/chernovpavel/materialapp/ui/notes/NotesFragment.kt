@@ -23,10 +23,10 @@ class NotesFragment : Fragment() {
     }.apply {
         setData(
             listOf(
-                Note("один"),
-                Note("два"),
-                Note("три"),
-                Note("четыре")
+                HeaderItem("Это header"),
+                NoteItem(Note("один")),
+                NoteItem(Note("два")),
+                NoteItem(Note("три"))
             )
         )
         notifyDataSetChanged()
