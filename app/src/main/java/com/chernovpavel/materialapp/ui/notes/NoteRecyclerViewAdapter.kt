@@ -34,7 +34,7 @@ class NoteRecyclerViewAdapter(
     }
 
     private fun generateItem() =
-        Pair(AdapterItem.NoteItem(Note("новая", "11 много текста много текста")), false)
+        Pair(AdapterItem.NoteItem(Note("Введите заголовок", "Описание...")), false)
 
 
     override fun getItemViewType(position: Int): Int = when (data[position].first) {
@@ -68,8 +68,8 @@ class NoteRecyclerViewAdapter(
             is NoteViewHolder -> {
                 val item = data[position].first as AdapterItem.NoteItem
                 holder.title.text = item.note.title
-                holder.text.text = item.note.text
-                holder.text.visibility =
+                holder.description.text = item.note.text
+                holder.description.visibility =
                     if (data[position].second) View.VISIBLE else View.GONE
             }
 
@@ -86,7 +86,7 @@ class NoteRecyclerViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         val title: TextView = binding.itemTitle
-        val text: TextView = binding.itemText
+        val description: TextView = binding.itemText
 
         init {
             itemView.setOnClickListener {
@@ -98,8 +98,8 @@ class NoteRecyclerViewAdapter(
             binding.moveItemDown.setOnClickListener { moveDown() }
             binding.moveItemUp.setOnClickListener { moveUp() }
 
-            binding.itemTitle.setOnClickListener {
-                toggleText()
+            binding.expandItem.setOnClickListener {
+                toggleText(binding)
             }
 
             binding.removeItemImageView.setOnClickListener {
@@ -131,10 +131,14 @@ class NoteRecyclerViewAdapter(
             notifyItemRemoved(layoutPosition)
         }
 
-        private fun toggleText() {
+        private fun toggleText(binding: FragmentNoteItemBinding) {
             data[layoutPosition] = data[layoutPosition].let {
                 it.first to !it.second
             }
+            val txt = binding.itemTitle.text
+            val desc = binding.itemText.text
+            data[layoutPosition] =
+                Pair(AdapterItem.NoteItem(Note("$txt", "$desc")), data[layoutPosition].second)
             notifyItemChanged(layoutPosition)
         }
     }

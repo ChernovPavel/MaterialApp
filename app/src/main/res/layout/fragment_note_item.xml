@@ -3,30 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:text="заметка 1"
+        tools:text="заметка 1"
         android:textAppearance="?attr/textAppearanceListItem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/item_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:text="тут текст описание заметки"
+        android:textColor="@color/black"
         android:textAppearance="?attr/textAppearanceListItem"
-        android:textColor="#000"
+        tools:text="тут текст описания заметки"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_title" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/expand_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/removeItemImageView"
+        app:layout_constraintEnd_toStartOf="@+id/moveItemUp"
+        app:layout_constraintTop_toTopOf="@id/removeItemImageView"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/moveItemUp"
@@ -34,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:tint="@color/design_default_color_error"
-
         app:layout_constraintBottom_toBottomOf="@+id/moveItemDown"
         app:layout_constraintEnd_toStartOf="@+id/moveItemDown"
         app:layout_constraintTop_toTopOf="@+id/moveItemDown"
