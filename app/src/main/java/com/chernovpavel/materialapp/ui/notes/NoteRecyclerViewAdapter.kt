@@ -89,8 +89,30 @@ class NoteRecyclerViewAdapter(
                 }
             }
 
+            binding.moveItemDown.setOnClickListener { moveDown() }
+            binding.moveItemUp.setOnClickListener { moveUp() }
+
             binding.removeItemImageView.setOnClickListener {
                 removeItem()
+            }
+        }
+
+
+        private fun moveUp() {
+            layoutPosition.takeIf { it > 1 }?.also { currentPosition ->
+                data.removeAt(currentPosition).apply {
+                    data.add(currentPosition - 1, this)
+                }
+                notifyItemMoved(currentPosition, currentPosition - 1)
+            }
+        }
+
+        private fun moveDown() {
+            layoutPosition.takeIf { it < data.size - 1 }?.also { currentPosition ->
+                data.removeAt(currentPosition).apply {
+                    data.add(currentPosition + 1, this)
+                }
+                notifyItemMoved(currentPosition, currentPosition + 1)
             }
         }
 
