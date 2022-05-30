@@ -23,10 +23,10 @@ class NotesFragment : Fragment() {
     }.apply {
         setData(
             listOf(
-                AdapterItem.HeaderItem("Это header"),
-                AdapterItem.NoteItem(Note("один")),
-                AdapterItem.NoteItem(Note("два")),
-                AdapterItem.NoteItem(Note("три"))
+                Pair(AdapterItem.HeaderItem("Это header"), false),
+                Pair(AdapterItem.NoteItem(Note("один", "11 много текста много текста")), false),
+                Pair(AdapterItem.NoteItem(Note("два", "22 много текста много текста")), false),
+                Pair(AdapterItem.NoteItem(Note("три", "33 много текста много текста")), false)
             )
         )
     }
