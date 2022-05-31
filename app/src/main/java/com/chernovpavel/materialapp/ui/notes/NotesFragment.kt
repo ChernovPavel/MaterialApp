@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.chernovpavel.materialapp.R
 import com.chernovpavel.materialapp.databinding.FragmentNotesListBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class NotesFragment : Fragment() {
@@ -14,19 +15,30 @@ class NotesFragment : Fragment() {
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = NoteRecyclerViewAdapter {
-        Toast.makeText(
-            requireActivity(),
-            it.text,
-            Toast.LENGTH_SHORT
-        ).show()
-    }.apply {
+    private val adapter = NoteRecyclerViewAdapter(
+        {
+            Snackbar.make(
+                binding.listRv,
+                it,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        },
+        {
+            Snackbar.make(
+                binding.listRv,
+                it.img.toString(),
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }).apply {
         setData(
             listOf(
                 HeaderItem("Это header"),
-                NoteItem(Note("один")),
-                NoteItem(Note("два")),
-                NoteItem(Note("три"))
+                NoteItem("один"),
+                ImageItem(R.drawable.house),
+                NoteItem("два"),
+                NoteItem("три"),
+                ImageItem(R.drawable.house)
+
             )
         )
         notifyDataSetChanged()
