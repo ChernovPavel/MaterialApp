@@ -2,8 +2,8 @@ package com.chernovpavel.materialapp.ui.notes
 
 import androidx.annotation.DrawableRes
 
-sealed class AdapterItem
+sealed class AdapterItem(val key: String)
 
-class NoteItem(val text: String) : AdapterItem()
-class ImageItem(@DrawableRes val img: Int) : AdapterItem()
-class HeaderItem(val txt: String) : AdapterItem()
+data class NoteItem(val id: String, val text: String) : AdapterItem(id)
+data class ImageItem(val id: String, @DrawableRes val img: Int) : AdapterItem(id)
+data class HeaderItem(val id: String, val txt: String) : AdapterItem(id)

@@ -4,17 +4,27 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chernovpavel.materialapp.databinding.FragmentNoteItemBinding
 import com.chernovpavel.materialapp.databinding.ItemHeaderBinding
 import com.chernovpavel.materialapp.databinding.ItemImageBinding
-import java.util.*
 
 
-class NoteRecyclerViewAdapter(
+class ListAdapter(
     private var noteItemClicked: ((txt: String) -> Unit)? = null,
     private var imgItemClicked: ((img: ImageItem) -> Unit)? = null
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : ListAdapter<AdapterItem, RecyclerView.ViewHolder>(object :
+    DiffUtil.ItemCallback<AdapterItem>() {
+
+    override fun areItemsTheSame(oldItem: AdapterItem, newItem: AdapterItem): Boolean =
+        oldItem.key == newItem.key
+
+    override fun areContentsTheSame(oldItem: AdapterItem, newItem: AdapterItem): Boolean =
+        oldItem == newItem
+
+}) {
 
     companion object {
         private const val TYPE_NOTE = 1
@@ -22,17 +32,7 @@ class NoteRecyclerViewAdapter(
         private const val TYPE_IMAGE = 3
     }
 
-    private var data = mutableListOf<AdapterItem>()
-
-
-    fun setData(notes: List<AdapterItem>) {
-        data.apply {
-            clear()
-            addAll(notes)
-        }
-    }
-
-    override fun getItemViewType(position: Int): Int = when (data[position]) {
+    override fun getItemViewType(position: Int): Int = when (currentList[position]) {
         is NoteItem -> TYPE_NOTE
         is HeaderItem -> TYPE_HEADER
         is ImageItem -> TYPE_IMAGE
@@ -70,31 +70,22 @@ class NoteRecyclerViewAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is NoteViewHolder -> {
-                val item = data[position] as NoteItem
+                val item = currentList[position] as NoteItem
                 holder.title.text = item.text
             }
 
             is HeaderViewHolder -> {
-                val item = data[position] as HeaderItem
+                val item = currentList[position] as HeaderItem
                 holder.headerTxt.text = item.txt
             }
 
             is ImageViewHolder -> {
-                val item = data[position] as ImageItem
+                val item = currentList[position] as ImageItem
                 holder.img.setImageResource(item.img)
             }
         }
     }
 
-    override fun getItemCount(): Int = data.size
-
-    fun itemRemoved(pos: Int) {
-        data.removeAt(pos)
-    }
-
-    fun itemMoved(from: Int, to: Int) {
-        Collections.swap(data, from, to)
-    }
 
     inner class NoteViewHolder(binding: FragmentNoteItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -103,7 +94,7 @@ class NoteRecyclerViewAdapter(
 
         init {
             itemView.setOnClickListener {
-                (data[bindingAdapterPosition] as? NoteItem)?.let {
+                (currentList[bindingAdapterPosition] as? NoteItem)?.let {
                     noteItemClicked?.invoke(it.text)
                 }
             }
@@ -117,7 +108,7 @@ class NoteRecyclerViewAdapter(
 
         init {
             img.setOnLongClickListener {
-                (data[bindingAdapterPosition] as? ImageItem)?.let {
+                (currentList[bindingAdapterPosition] as? ImageItem)?.let {
                     imgItemClicked?.invoke(it)
                 }
                 true
