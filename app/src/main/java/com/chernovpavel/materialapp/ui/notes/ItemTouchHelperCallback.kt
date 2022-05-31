@@ -3,7 +3,10 @@ package com.chernovpavel.materialapp.ui.notes
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemTouchHelperCallback(val onItemSwiped: (position: Int) -> Unit) :
+class ItemTouchHelperCallback(
+    val onItemSwiped: (position: Int) -> Unit,
+    val onItemMoved: (from: Int, to: Int) -> Unit,
+) :
     ItemTouchHelper.Callback() {
 
     override fun getMovementFlags(
@@ -22,6 +25,10 @@ class ItemTouchHelperCallback(val onItemSwiped: (position: Int) -> Unit) :
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
+        val from = viewHolder.bindingAdapterPosition
+        val to = target.bindingAdapterPosition
+        onItemMoved(from, to)
+
         return true
     }
 

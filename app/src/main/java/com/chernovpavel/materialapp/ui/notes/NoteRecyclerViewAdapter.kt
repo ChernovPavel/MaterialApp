@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chernovpavel.materialapp.databinding.FragmentNoteItemBinding
 import com.chernovpavel.materialapp.databinding.ItemHeaderBinding
 import com.chernovpavel.materialapp.databinding.ItemImageBinding
+import java.util.*
 
 
 class NoteRecyclerViewAdapter(
@@ -89,6 +90,10 @@ class NoteRecyclerViewAdapter(
 
     fun itemRemoved(pos: Int) {
         data.removeAt(pos)
+    }
+
+    fun itemMoved(from: Int, to: Int) {
+        Collections.swap(data, from, to)
     }
 
     inner class NoteViewHolder(binding: FragmentNoteItemBinding) :

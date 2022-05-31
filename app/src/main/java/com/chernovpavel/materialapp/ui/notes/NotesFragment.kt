@@ -57,10 +57,20 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.listRv.adapter = adapter
 
-        ItemTouchHelper(ItemTouchHelperCallback {
-            adapter.itemRemoved(it)
-            adapter.notifyItemRemoved(it)
-        })
+        ItemTouchHelper(
+            ItemTouchHelperCallback(
+                {
+                    adapter.itemRemoved(it)
+                    adapter.notifyItemRemoved(it)
+
+                },
+                { from, to ->
+                    adapter.itemMoved(from, to)
+                    adapter.notifyItemMoved(from, to)
+                    adapter.notifyItemChanged(from)
+                    adapter.notifyItemChanged(to)
+                })
+        )
             .attachToRecyclerView(binding.listRv)
     }
 
