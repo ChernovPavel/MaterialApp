@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.chernovpavel.materialapp.R
 import com.chernovpavel.materialapp.databinding.FragmentNotesListBinding
 import com.google.android.material.snackbar.Snackbar
@@ -55,6 +56,12 @@ class NotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.listRv.adapter = adapter
+
+        ItemTouchHelper(ItemTouchHelperCallback {
+            adapter.itemRemoved(it)
+            adapter.notifyItemRemoved(it)
+        })
+            .attachToRecyclerView(binding.listRv)
     }
 
     override fun onDestroyView() {

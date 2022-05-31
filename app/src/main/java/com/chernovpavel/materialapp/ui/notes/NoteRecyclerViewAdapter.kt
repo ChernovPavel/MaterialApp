@@ -87,6 +87,10 @@ class NoteRecyclerViewAdapter(
 
     override fun getItemCount(): Int = data.size
 
+    fun itemRemoved(pos: Int) {
+        data.removeAt(pos)
+    }
+
     inner class NoteViewHolder(binding: FragmentNoteItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
