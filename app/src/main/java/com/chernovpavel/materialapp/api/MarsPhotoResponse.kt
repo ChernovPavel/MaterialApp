@@ -1,4 +1,4 @@
-package com.example.materialapp.api
+package com.chernovpavel.materialapp.api
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

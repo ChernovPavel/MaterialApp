@@ -1,4 +1,4 @@
-package com.example.materialapp.ui
+package com.chernovpavel.materialapp.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
-import com.example.materialapp.R
-import com.example.materialapp.databinding.FragmentPicOfDayStartBinding
-import com.example.materialapp.domain.NasaRepositoryImpl
+import com.chernovpavel.materialapp.R
+import com.chernovpavel.materialapp.databinding.FragmentPicOfDayStartBinding
+import com.chernovpavel.materialapp.domain.NasaRepositoryImpl
 
 class PicOfDayFragment : Fragment() {
 

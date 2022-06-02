@@ -9,4 +9,7 @@
     <string name="btn_green_theme">Green Theme</string>
     <string name="btn_red_theme">Red Theme</string>
     <string name="bottom_menu_weather">weather</string>
+    <string name="button_on_mars_photo_activity">Animation Activity</string>
+    <string name="animate">Animate</string>
+    <string name="transitions_example">Yyyyooooo!!!</string>
 </resources>

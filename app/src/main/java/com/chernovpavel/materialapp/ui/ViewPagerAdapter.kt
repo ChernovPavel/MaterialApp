@@ -1,4 +1,4 @@
-package com.example.materialapp.ui
+package com.chernovpavel.materialapp.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
