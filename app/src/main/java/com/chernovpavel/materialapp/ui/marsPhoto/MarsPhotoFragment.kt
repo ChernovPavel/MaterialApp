@@ -1,4 +1,4 @@
-package com.chernovpavel.materialapp.ui
+package com.chernovpavel.materialapp.ui.marsPhoto
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,6 +17,7 @@ import androidx.lifecycle.coroutineScope
 import coil.load
 import com.chernovpavel.materialapp.databinding.FragmentMarsPhotoBinding
 import com.chernovpavel.materialapp.domain.NasaRepositoryImpl
+import com.chernovpavel.materialapp.ui.AnimationActivity
 
 class MarsPhotoFragment : Fragment() {
 

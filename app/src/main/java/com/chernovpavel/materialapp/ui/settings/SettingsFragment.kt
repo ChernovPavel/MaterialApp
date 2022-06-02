@@ -1,4 +1,4 @@
-package com.chernovpavel.materialapp.ui
+package com.chernovpavel.materialapp.ui.settings
 
 import android.content.Context
 import android.os.Bundle

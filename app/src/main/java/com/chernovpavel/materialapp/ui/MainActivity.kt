@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.chernovpavel.materialapp.R
 import com.chernovpavel.materialapp.databinding.ActivityMainBinding
+import com.chernovpavel.materialapp.ui.settings.THEME
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
                     ContextCompat.getDrawable(this, R.drawable.ic_baseline_wb_sunny_24)
                 2 -> tab.icon =
                     ContextCompat.getDrawable(this, R.drawable.ic_baseline_settings_24)
+                3 -> tab.icon =
+                    ContextCompat.getDrawable(this, R.drawable.ic_baseline_event_note_24)
                 else -> tab.icon =
                     ContextCompat.getDrawable(this, R.drawable.ic_baseline_image_search_24)
             }
