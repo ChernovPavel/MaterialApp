@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.chernovpavel.materialapp.R
 import com.chernovpavel.materialapp.databinding.FragmentNotesListBinding
-import com.google.android.material.snackbar.Snackbar
+import com.chernovpavel.materialapp.delegates.*
 import java.util.*
 
 
@@ -24,23 +25,14 @@ class NotesFragment : Fragment() {
         NumberItem("id4", "четыре"),
         NumberItem("id5", "пять")
     )
-
-    private val adapter = ListAdapter(
-        {
-            Snackbar.make(
-                binding.listRv,
-                it,
-                Snackbar.LENGTH_SHORT
-            ).show()
-        },
-        {
-            Snackbar.make(
-                binding.listRv,
-                it.img.toString(),
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }).apply {
-        submitList(data as List<AdapterItem>?)
+    private var adapter = DelegatesAdapter(
+        listOf(
+            HeaderAdapterDelegate(),
+            ImageAdapterDelegate {},
+            NumberAdapterDelegate()
+        ) as List<AdapterDelegate<AdapterItem>>
+    ).apply {
+        submitList(data)
     }
 
     override fun onCreateView(
