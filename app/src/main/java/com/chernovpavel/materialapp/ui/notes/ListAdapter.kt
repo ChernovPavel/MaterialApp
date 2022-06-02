@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.chernovpavel.materialapp.databinding.FragmentNoteItemBinding
 import com.chernovpavel.materialapp.databinding.ItemHeaderBinding
 import com.chernovpavel.materialapp.databinding.ItemImageBinding
+import com.chernovpavel.materialapp.databinding.ItemNumberBinding
 
 
 class ListAdapter(
@@ -33,7 +33,7 @@ class ListAdapter(
     }
 
     override fun getItemViewType(position: Int): Int = when (currentList[position]) {
-        is NoteItem -> TYPE_NOTE
+        is NumberItem -> TYPE_NOTE
         is HeaderItem -> TYPE_HEADER
         is ImageItem -> TYPE_IMAGE
     }
@@ -41,8 +41,8 @@ class ListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
             TYPE_NOTE ->
-                NoteViewHolder(
-                    FragmentNoteItemBinding.inflate(
+                NumberViewHolder(
+                    ItemNumberBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -69,8 +69,8 @@ class ListAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is NoteViewHolder -> {
-                val item = currentList[position] as NoteItem
+            is NumberViewHolder -> {
+                val item = currentList[position] as NumberItem
                 holder.title.text = item.text
             }
 
@@ -87,14 +87,14 @@ class ListAdapter(
     }
 
 
-    inner class NoteViewHolder(binding: FragmentNoteItemBinding) :
+    inner class NumberViewHolder(binding: ItemNumberBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         val title: TextView = binding.itemText
 
         init {
             itemView.setOnClickListener {
-                (currentList[bindingAdapterPosition] as? NoteItem)?.let {
+                (currentList[bindingAdapterPosition] as? NumberItem)?.let {
                     noteItemClicked?.invoke(it.text)
                 }
             }

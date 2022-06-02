@@ -17,12 +17,12 @@ class NotesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var data = mutableListOf(
-        NoteItem("id0", "ноль"),
-        NoteItem("id1", "один"),
-        NoteItem("id2", "два"),
-        NoteItem("id3", "три"),
-        NoteItem("id4", "четыре"),
-        NoteItem("id5", "пять")
+        NumberItem("id0", "ноль"),
+        HeaderItem("id1", "header"),
+        NumberItem("id2", "два"),
+        ImageItem("id3", R.drawable.house),
+        NumberItem("id4", "четыре"),
+        NumberItem("id5", "пять")
     )
 
     private val adapter = ListAdapter(
