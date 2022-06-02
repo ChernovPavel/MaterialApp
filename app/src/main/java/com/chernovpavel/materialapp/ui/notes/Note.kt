@@ -1,7 +1,0 @@
-package com.chernovpavel.materialapp.ui.notes
-
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class Note(val text: String) : Parcelable

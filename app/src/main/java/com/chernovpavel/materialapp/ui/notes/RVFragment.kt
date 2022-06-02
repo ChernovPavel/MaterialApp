@@ -12,7 +12,7 @@ import com.chernovpavel.materialapp.delegates.*
 import java.util.*
 
 
-class NotesFragment : Fragment() {
+class RVFragment : Fragment() {
 
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!

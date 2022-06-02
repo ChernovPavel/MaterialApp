@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.chernovpavel.materialapp.ui.marsPhoto.MarsPhotoFragment
-import com.chernovpavel.materialapp.ui.notes.NotesFragment
+import com.chernovpavel.materialapp.ui.notes.RVFragment
 import com.chernovpavel.materialapp.ui.picOfDay.PicOfDayFragment
 import com.chernovpavel.materialapp.ui.settings.SettingsFragment
 
@@ -17,7 +17,7 @@ private const val NOTES_FRAGMENT = 3
 class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
     private val fragments =
-        arrayOf(PicOfDayFragment(), MarsPhotoFragment(), SettingsFragment(), NotesFragment())
+        arrayOf(PicOfDayFragment(), MarsPhotoFragment(), SettingsFragment(), RVFragment())
 
     override fun getItemCount(): Int {
         return fragments.size

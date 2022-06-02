@@ -13,7 +13,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ui.notes.NotesFragment"
+        tools:context=".ui.notes.RVFragment"
         tools:listitem="@layout/item_number" />
 
 </FrameLayout>
