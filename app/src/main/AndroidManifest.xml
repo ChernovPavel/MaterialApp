@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.GreenTheme">
+        android:theme="@style/AppTheme.GreenTheme.Splash">
         <activity
             android:name="com.chernovpavel.materialapp.ui.AnimationActivity"
             android:exported="false" />

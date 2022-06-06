@@ -34,6 +34,10 @@
         <item name="colorSecondaryVariantTheme">@color/dark_blue</item>
     </style>
 
+    <style name="AppTheme.GreenTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_background_drawable</item>
+    </style>
+
     <style name="AppTextField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@color/text_field_background</item>
     </style>
