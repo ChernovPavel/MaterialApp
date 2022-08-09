@@ -28,7 +28,8 @@ class RVFragment : Fragment() {
     private var adapter = DelegatesAdapter(
         listOf(
             HeaderAdapterDelegate(),
-            ImageAdapterDelegate {},
+            ImageAdapterDelegate {
+            },
             NumberAdapterDelegate()
         ) as List<AdapterDelegate<AdapterItem>>
     ).apply {
